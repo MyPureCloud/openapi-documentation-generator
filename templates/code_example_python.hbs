@@ -1,0 +1,18 @@
+<% code("python") do %>import PureCloudPlatformClientV2
+PureCloudPlatformClientV2.configuration.access_token = 'YOUR ACCESS TOKEN'
+
+{{#each parameters}}
+{{#if (has_ref .)}}
+{{name}} = PureCloudPlatformClientV2.{{ref .}}
+{{#required_properties .}}
+{{../name}}.{{underscore name}} = {{default_value .}};
+{{/required_properties}}
+{{/if}}
+{{#unless (has_ref .)}}
+{{name}} = {{default_value .}};
+{{/unless}}
+{{/each}}
+
+api = PureCloudPlatformClientV2.{{@root.name}}Api()
+{{#returnType}}result = {{/returnType}}api.{{underscore x-purecloud-method-name}}({{#each parameters}}{{name}}{{#unless @last}}, {{/unless}}{{/each}})
+<% end %>

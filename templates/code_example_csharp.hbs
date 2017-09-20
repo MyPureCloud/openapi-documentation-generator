@@ -1,0 +1,19 @@
+
+<% code("csharp") do %>Configuration.Default.AccessToken = "your_access_token";
+
+var api = new {{@root.name}}Api();
+
+{{#each parameters}}
+{{#if (has_ref .)}}
+{{ref .}} {{name}} = new {{ref .}};
+{{#required_properties .}}
+{{../name}}.{{name}} = {{default_value .}};
+{{/required_properties}}
+{{/if}}
+{{#unless (has_ref .)}}
+{{name}} = {{default_value .}};
+{{/unless}}
+{{/each}}
+
+{{#if returnType}}{{returnType}} result = {{/if}}api.{{capitalizedmethod .}}({{#each parameters}}{{name}}{{#unless @last}}, {{/unless}}{{/each}});
+<%end%>

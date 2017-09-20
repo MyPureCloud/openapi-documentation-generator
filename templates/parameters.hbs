@@ -1,0 +1,75 @@
+<h4>Parameters</h4>
+<div class="container-fixed">
+    <div class="row swagger-grid-row swagger-param-row ">
+        <div class="col-xs-2 col-sm-2 col-md-2 text-right">
+            <b>Name</b>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-1">
+            <b>Default</b>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-4">
+            <b>Description</b>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2">
+            <b>Parameter Type</b>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2">
+            <b>Data Type</b>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-1">
+            <b>Required</b>
+        </div>
+    </div>
+    {{#parameters}}
+
+    <div class="row swagger-grid-row swagger-grid-border ">
+        <div class="col-xs-2 col-sm-2 col-md-2 text-right notranslate">
+            <label>{{name}}</label>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 notranslate">
+            {{default}}
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-desc">
+            {{description}}
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 notranslate">
+            {{in}}
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 notranslate">
+            {{type}}{{schema.type}} {{ref .}}{{schema.items.type}}
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 notranslate">
+            {{required}}
+        </div>
+    </div>
+    {{#if (has_ref .)}}
+    <div>
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#{{../operationId}}schema" aria-controls="{{../operationId}}schema" role="tab" data-toggle="tab">Schema</a></li>
+        <li role="presentation"><a href="#{{../operationId}}json" aria-controls="{{../operationId}}json" role="tab" data-toggle="tab">JSON Example</a></li>
+
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="{{../operationId}}schema">
+                <div class="row swagger-grid-row swagger-param-row swagger-example-row notranslate request-body-information">
+                    <div data-ref='{{ref .}}'></div>
+                </div>
+        </div>
+        <div role="tabpanel" class="tab-pane json-tab-pane " id="{{../operationId}}json">
+<% code("json") do %>
+{{{example_json . false}}}
+<%end%>
+</div>
+
+      </div>
+
+    </div>
+
+    {{/if}}
+    {{/parameters}}
+    <div class="row swagger-grid-border"></div>
+</div>

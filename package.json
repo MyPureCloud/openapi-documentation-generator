@@ -1,0 +1,20 @@
+{
+  "name": "openapi-documentation-generator",
+  "version": "1.0.0",
+  "description": "Generate HTML from swagger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "args": "^3.0.4",
+    "handlebars": "^4.0.10",
+    "openapi-model-example": "git+https://github.com/KevinGlinski/openapi-model-example.git",
+    "request": "^2.81.0"
+  },
+  "bin": {
+    "openapi-documentation-generator": "./index.js"
+  }
+}

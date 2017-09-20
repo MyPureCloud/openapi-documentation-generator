@@ -1,0 +1,89 @@
+
+<div class="row api-calls-container">
+  <div class="col-md-12">
+      <div style='display:none'>
+          {{#each models}}
+              {{> model }}
+          {{/each}}
+      </div>
+
+    {{#each operations}}
+    <a class='swagger-anchor' name="{{operationId}}"></a>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default panel-{{method}}">
+            <div class="panel-heading" role="tab" id="heading{{operationId}}">
+              <h4 class="panel-title">
+                <div role="button" class='section-button' data-toggle="collapse" data-parent="#accordion" href="#{{operationId}}" aria-expanded="true" aria-controls="{{operationId}}">
+                  <div class="row swagger-row">
+                      <div class='method col-xs-2 col-sm-2 col-md-1'>
+                          {{method}}
+                      </div>
+                      <div class='uri col-xs-10 col-sm-10  col-md-11'>
+                          {{uri}}  {{#deprecated}}<span class="label label-warning">DEPRECATED</span>{{/deprecated}}
+                      </div>
+                      <div class='summary col-xs-9 col-sm-9 col-md-offset-1 col-md-8'>
+                          {{summary}}
+                      </div>
+
+                  </div>
+                 
+                </div>
+              </h4>
+            </div>
+            <div id="{{operationId}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{operationId}}">
+          <div class="panel-body">
+              <div class="container-fixed container-desc-long">
+                <div class="row hidden-xs">
+                  <div class="col-md-12">
+{{> code_examples}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-9 col-md-offset-1 col-desc">
+                    {{description}}
+                  </div>
+                </div>
+              </div>
+{{> permissions}}
+{{> parameters}}
+{{> responses}}
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+
+  </div>
+</div>
+
+<script>
+
+
+function migrate(node, dataelem){
+    var selector = "[data-model='"+ node.data(dataelem) +"']";
+
+    //$(this).removeData("ref");
+    //debugger;
+    var model =$(selector).clone();
+    model.removeData("model");
+    model.removeAttr("data-model");
+    model.appendTo(node);
+
+
+    model.find(".property").each(function(){
+        var key = $(this).data('key');
+        $(this).click(function(){
+            $("." + key).toggle();
+
+            $(this).find(".expandsubmodel").toggle();
+            $(this).find(".hidesubmodel").toggle();
+        });
+    });
+}
+
+$('[data-ref]').each(function(){
+    migrate($(this), 'ref');
+    $('[data-subref]').hide();
+});
+
+</script>

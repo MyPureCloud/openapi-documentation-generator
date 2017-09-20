@@ -1,0 +1,23 @@
+<% code("ruby") do %>
+require 'purecloudplatformclientv2'
+
+PureCloud.configure do |config|
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api = PureCloud::{{@root.name}}Api.new
+{{#each parameters}}
+{{#if (has_ref .)}}
+{{name}} = {{ref .}}.new
+{{#required_properties .}}
+{{../name}}.{{name}} = {{default_value .}};
+{{/required_properties}}
+{{/if}}
+{{#unless (has_ref .)}}
+{{name}} = {{default_value .}};
+{{/unless}}
+{{/each}}
+
+
+{{#returnType}}result = {{/returnType}}api.{{underscore x-purecloud-method-name}} {{#each parameters}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}
+<% end %>

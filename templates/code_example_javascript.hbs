@@ -1,0 +1,17 @@
+<% code("javascript") do %>var api = new platformClient.<%=current_page.data.swaggertag%>Api();
+
+{{#each parameters}}
+{{#if (has_ref .)}}
+var {{name}} = {{example_json . false}};
+{{/if}}
+{{#unless (has_ref .)}}
+{{name}} = {{default_value .}};
+{{/unless}}
+{{/each}}
+
+api.{{x-purecloud-method-name}}({{#parameters}}{{name}}{{#unless @last}}, {{/unless}}{{/parameters}}).then(function(result){
+    //successful call
+}).catch(function(error){
+    //error while making call
+});
+<% end %>

@@ -1,0 +1,9 @@
+
+<% code("shell") do %>curl -X {{method}}
+-H "Authorization: bearer AUTHTOKEN"
+-H "Content-Type: application/json"
+{{#each parameters}}
+{{#unless (ref .)}}-H '{{name}}: {{default_value .}}'{{/unless}}{{#if (ref .)}}-d '{{example_json . false}}'{{/if}}
+{{/each}}
+"https://api.mypurecloud.com{{uri}}"
+<% end %>

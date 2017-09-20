@@ -1,0 +1,16 @@
+<div data-model="{{modelname}}" class='swagger-model' >
+
+    <h5>{{modelname}}</h5>
+    {{#each properties}}
+    <dl class="dl-horizontal {{#if readOnly}}property_readonly{{/if}} {{#if (has_ref .)}}property{{/if}}" data-key="{{@key}}{{property_type .}}{{../modelname}}" >
+      <dt>{{@key}}{{#if (has_ref .)}}<i class="fa fa-caret-right expandsubmodel" aria-hidden="true" ></i><i class="fa fa-caret-down hidesubmodel" aria-hidden="true" style='display:none'></i>{{/if}}</dt>
+      <dd>(<em>{{property_type_display .}}<span class='property_is_required'>{{is_required .. @key}}</span></em>){{#if description}}:{{/if}} {{description}} {{valid_values .}}</dd>
+    </dl>
+
+    {{#if (has_ref .)}}<div style='margin-left:20px; ' data-subref='{{ref .}}' class='{{@key}}{{property_type .}}{{../modelname}} {{#if readOnly}}property_readonly{{/if}}' style='display:none'>
+        {{{nested_model .. .}}}
+    </div>{{/if}}
+
+    {{/each}}
+
+</div>
