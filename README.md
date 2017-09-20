@@ -10,4 +10,4 @@ for the available options.
 
 ## Example
 
-```swagger-documentation-generator  --swaggerurl=https://s3.dualstack.us-east-1.amazonaws.com/inin-prod-api/us-east-1/public-api-v2/swagger-schema/publicapi-v2-latest.json --output=/Data/bitbucket/developer-center/source/partials/generated/api/rest/v2 --templatedir=/Data/bitbucket/developer-center/templates --showexamples=true
+``` swagger-documentation-generator  --swaggerurl=https://s3.dualstack.us-east-1.amazonaws.com/inin-prod-api/us-east-1/public-api-v2/swagger-schema/publicapi-v2-latest.json --output=/Data/bitbucket/developer-center/source/partials/generated/api/rest/v2 --templatedir=/Data/bitbucket/developer-center/templates --showexamples=true ```
