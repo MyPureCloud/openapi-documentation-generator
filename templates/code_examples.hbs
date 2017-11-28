@@ -1,6 +1,6 @@
-{{#if (show_examples)}}
+{{#show_examples}}
 <div class="usage-container">
-  <div id='{{operationId}}HideExample' class="code-example-toggle" onclick="hideExample('{{operationId}}')" style='display:none'>
+  <div id='{{../operationId}}HideExample' class="code-example-toggle" onclick="hideExample('{{../operationId}}')" style='display:none'>
       <h4>
         <i class="fa fa-caret-down swagger-body-toggle"
           data-toggle="tooltip"
@@ -8,7 +8,7 @@
           title="Hide example"></i>Usage</h4>
       <i class="fa fa-code"></i>
   </div>
-  <div id='{{operationId}}ShowExample' class="code-example-toggle" onclick="showExample('{{operationId}}')">
+  <div id='{{../operationId}}ShowExample' class="code-example-toggle" onclick="showExample('{{../operationId}}')">
       <h4>
         <i class="fa fa-caret-right swagger-body-toggle"
           data-toggle="tooltip"
@@ -16,31 +16,31 @@
           title="Show example"></i>Usage</h4>
       <i class="fa fa-code"></i>
   </div>
-  <div class="tabbable code-examples" id='{{operationId}}Example' style='display:none' >
+  <div class="tabbable code-examples" id='{{../operationId}}Example' style='display:none' >
      <ul class="nav nav-pills nav-stacked col-md-2">
-         <li class="active code-example-curl"  ><a href="#{{operationId}}curl" data-language="curl" data-toggle="tab">cURL</a></li>
-         <li class="code-example-js"><a href="#{{operationId}}js" data-language="js" data-toggle="tab">Javascript</a></li>
-         <li class="code-example-csharp"><a href="#{{operationId}}csharp" data-language="csharp" data-toggle="tab">.Net</a></li>
-         <li class="code-example-ruby"><a href="#{{operationId}}ruby" data-language="ruby" data-toggle="tab">Ruby</a></li>
-         <li class="code-example-python"><a href="#{{operationId}}python" data-language="python" data-toggle="tab">Python</a></li>
+         <li class="active code-example-curl"  ><a href="#{{../operationId}}curl" data-language="curl" data-toggle="tab">cURL</a></li>
+         <li class="code-example-js"><a href="#{{../operationId}}js" data-language="js" data-toggle="tab">Javascript</a></li>
+         <li class="code-example-csharp"><a href="#{{../operationId}}csharp" data-language="csharp" data-toggle="tab">.Net</a></li>
+         <li class="code-example-ruby"><a href="#{{../operationId}}ruby" data-language="ruby" data-toggle="tab">Ruby</a></li>
+         <li class="code-example-python"><a href="#{{../operationId}}python" data-language="python" data-toggle="tab">Python</a></li>
      </ul>
      <div class="tab-content col-md-10">
-         <div class="tab-pane code-example-pane code-example-pane-curl active" id="{{operationId}}curl">
-{{> code_example_curl}}
+         <div class="tab-pane code-example-pane code-example-pane-curl active" id="{{../operationId}}curl">
+{{> code_example_curl ..}}
         </div>
-        <div class="tab-pane code-example-pane code-example-pane-js" id="{{operationId}}js">
-{{> code_example_javascript}}
+        <div class="tab-pane code-example-pane code-example-pane-js" id="{{../operationId}}js">
+{{> code_example_javascript ..}}
         </div>
-         <div class="tab-pane code-example-pane code-example-pane-csharp" id="{{operationId}}csharp">
-{{> code_example_csharp}}
+         <div class="tab-pane code-example-pane code-example-pane-csharp" id="{{../operationId}}csharp">
+{{> code_example_csharp ..}}
          </div>
-         <div class="tab-pane code-example-pane code-example-pane-ruby" id="{{operationId}}ruby">
-{{> code_example_ruby}}
+         <div class="tab-pane code-example-pane code-example-pane-ruby" id="{{../operationId}}ruby">
+{{> code_example_ruby ..}}
          </div>
-         <div class="tab-pane code-example-pane code-example-pane-python" id="{{operationId}}python">
-{{> code_example_python}}
+         <div class="tab-pane code-example-pane code-example-pane-python" id="{{../operationId}}python">
+{{> code_example_python ..}}
          </div>
      </div>
   </div>
 </div>
-{{/if}}
+{{/show_examples}}
