@@ -13,8 +13,6 @@ args
   .option('category', 'Category to process (omit processes all)')
   .option('output', 'Directory if processing all files or file location if processing a single category')
 
-
-const DEFAULT_CATEGORY = 'default';
 const flags = args.parse(process.argv);
 
 var swagger = null;

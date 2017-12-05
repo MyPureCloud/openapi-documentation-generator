@@ -2,6 +2,8 @@ var handlebars = require('./lib/handlebars');
 const getModelName = require('./lib/getModelName');
 var categories = {};
 
+const DEFAULT_CATEGORY = 'default';
+
 function processSwagger(){
 
     if(!swagger.tags || swagger.tags.length === 0){
