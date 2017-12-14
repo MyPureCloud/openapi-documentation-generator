@@ -77,31 +77,33 @@ function processSwagger(){
             for(var t=0; t < pathOperationData.tags.length; t++){
                 categories[pathOperationData.tags[t]].operations.push(pathOperationData);
 
-                for(var x=0; x<pathOperationData.parameters.length; x++){
-                    var param = pathOperationData.parameters[x];
+                if(pathOperationData.parameters){
+                    for(var x=0; x<pathOperationData.parameters.length; x++){
+                        var param = pathOperationData.parameters[x];
 
 
-                    var schemaName = getModelName(param);
+                        var schemaName = getModelName(param);
 
-                    if(schemaName){
-                        addToSchemaMap(categories[pathOperationData.tags[t]].models, pathOperationData.tags[t], schemaName, 0);
+                        if(schemaName){
+                            addToSchemaMap(categories[pathOperationData.tags[t]].models, pathOperationData.tags[t], schemaName, 0);
+                        }
                     }
-                }
 
-                pathOperationData.parameters.sort(function(a,b){
-                    if(a.in !== b.in){
-                        if(a.in === 'body'){
-                            return 1
-                        }else if(b.in === 'body'){
-                            return -1
+                    pathOperationData.parameters.sort(function(a,b){
+                        if(a.in !== b.in){
+                            if(a.in === 'body'){
+                                return 1
+                            }else if(b.in === 'body'){
+                                return -1
+                            }
+
+                            return a.in.localeCompare(b.in);
                         }
 
-                        return a.in.localeCompare(b.in);
-                    }
-
-                    return a.name.localeCompare(b.name);
-                });
-
+                        return a.name.localeCompare(b.name);
+                    });
+                }
+                
                 for(var x=0; x< Object.keys(pathOperationData.responses).length; x++){
                     var key = Object.keys(pathOperationData.responses)[x];
                     var response = pathOperationData.responses[key];

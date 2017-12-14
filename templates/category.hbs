@@ -86,4 +86,48 @@ $('[data-ref]').each(function(){
     $('[data-subref]').hide();
 });
 
+
+function showOperationBody(operationid){
+    $("#" + operationid + "ShowBody").hide();
+    $("#" + operationid + "HideBody").show();
+    $("#" + operationid + "Body").show();
+}
+
+
+function hideOperationBody(operationid){
+    $("#" + operationid + "ShowBody").show();
+    $("#" + operationid + "HideBody").hide();
+    $("#" + operationid + "Body").hide();
+}
+
+
+function showOperationResponseBody(operationid){
+    $("#" + operationid + "ShowResponseBody").hide();
+    $("#" + operationid + "HideResponseBody").show();
+    $("#" + operationid + "ResponseBody").show();
+}
+
+
+function hideOperationResponseBody(operationid){
+    $("#" + operationid + "ShowResponseBody").show();
+    $("#" + operationid + "HideResponseBody").hide();
+    $("#" + operationid + "ResponseBody").hide();
+}
+
+
+function showExample(operationid){
+    $("#" + operationid + "ShowExample").hide();
+    $("#" + operationid + "HideExample").show();
+    $("#" + operationid + "Example").show();
+}
+
+
+function hideExample(operationid){
+    $("#" + operationid + "ShowExample").show();
+    $("#" + operationid + "HideExample").hide();
+    $("#" + operationid + "Example").hide();
+}
+
+
+
 </script>

@@ -54,14 +54,18 @@
                     </div>
             </div>
             <div role="tabpanel" class="tab-pane json-tab-pane" id="{{../operationId}}{{@key}}json">
-                <% code("json") do %>
+<pre>
+    <code>
 {{{example_json . true}}}
-                <%end%></div>
+    </code>
+</pre>
+
+            </div>
 
           </div>
 
 
-      </div>      
+      </div>
   </div>
   {{/if}}
   {{/each}}
