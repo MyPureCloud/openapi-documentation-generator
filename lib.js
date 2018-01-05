@@ -25,7 +25,7 @@ function processSwagger(){
     }
 
     function addToSchemaMap(map, category, schemaName, level){
-        if(level > 3){
+        if(level > 4){ //only go so deep so that incase a model has a ref to itself it doesn't get stuck in an infinate loop
             return;
         }
         swagger.definitions[schemaName].modelname = schemaName;
