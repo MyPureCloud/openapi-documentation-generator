@@ -56,16 +56,16 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="{{../operationId}}schema">
                 <div class="row swagger-grid-row swagger-param-row swagger-example-row notranslate request-body-information">
-                    <div data-ref='{{ref .}}'></div>
+                    {{#with_model .}}
+                    {{> model}}
+                    {{/with_model}}
                 </div>
         </div>
         <div role="tabpanel" class="tab-pane json-tab-pane " id="{{../operationId}}json">
-            <pre>
-                <code>
-            {{{example_json . false}}}
-                </code>
-            </pre>
-        </div>
+<% code("json") do %>
+{{{example_json . false}}}
+<%end%>
+</div>
 
       </div>
 

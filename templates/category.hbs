@@ -57,34 +57,17 @@
 </div>
 
 <script>
+$(".property").each(function(){
+    var key = $(this).data('key');
+    $(this).click(function(){
+        $("." + key).toggle();
 
-
-function migrate(node, dataelem){
-    var selector = "[data-model='"+ node.data(dataelem) +"']";
-
-    //$(this).removeData("ref");
-    //debugger;
-    var model =$(selector).first().clone();
-    model.removeData("model");
-    model.removeAttr("data-model");
-    model.appendTo(node);
-
-
-    model.find(".property").each(function(){
-        var key = $(this).data('key');
-        $(this).click(function(){
-            $("." + key).toggle();
-
-            $(this).find(".expandsubmodel").toggle();
-            $(this).find(".hidesubmodel").toggle();
-        });
+        $(this).find(".expandsubmodel").toggle();
+        $(this).find(".hidesubmodel").toggle();
     });
-}
-
-$('[data-ref]').each(function(){
-    migrate($(this), 'ref');
-    $('[data-subref]').hide();
 });
+
+$(".submodel").hide();
 
 
 function showOperationBody(operationid){
