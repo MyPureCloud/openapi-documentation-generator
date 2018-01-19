@@ -82,7 +82,7 @@ function processSwagger(){
             var pathOperationData = pathData[pathOperation];
 
             if(!pathOperationData.operationId){
-                pathOperationData.operationId = path.replace(/\//g, "");
+                pathOperationData.operationId = path.replace(/\W/g, "");
             }
 
             pathOperationData.method = pathOperation.toUpperCase();
