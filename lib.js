@@ -5,7 +5,33 @@ var categories = {};
 const DEFAULT_CATEGORY = 'default';
 
 function processSwagger(){
+    if(!swagger.tags || swagger.tags.length === 0){
+        swagger.tags = [];
 
+        let tagNames = [];
+        let paths = Object.keys(swagger.paths);
+
+        for(let x=0; x< paths.length; x++){
+            let path = paths[x];
+            let pathOperations = Object.keys(swagger.paths[path]);
+
+            for(let y=0; y < pathOperations.length; y++){
+                let operation = swagger.paths[path][pathOperations[y]];
+
+                if(typeof operation.tags !== "undefined" && operation.tags !== null){
+                    for(let i =0; i< operation.tags.length; i++){
+                        if(tagNames.indexOf(operation.tags[i]) === -1){
+                            tagNames.push(operation.tags[i]);
+                            swagger.tags.push({
+                                name: operation.tags[i]
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     if(!swagger.tags || swagger.tags.length === 0){
         swagger.tags = [
             {
