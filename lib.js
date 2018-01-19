@@ -75,6 +75,10 @@ function processSwagger(){
             }
 
             for(var t=0; t < pathOperationData.tags.length; t++){
+                if(typeof categories[pathOperationData.tags[t]] === "undefined"){
+                    continue;
+                }
+                
                 categories[pathOperationData.tags[t]].operations.push(pathOperationData);
 
                 if(pathOperationData.parameters){
