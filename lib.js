@@ -54,6 +54,11 @@ function processSwagger(){
         if(level > 4){ //only go so deep so that incase a model has a ref to itself it doesn't get stuck in an infinate loop
             return;
         }
+        
+        if (!swagger.definitions[schemaName]){
+            return;   
+        }
+        
         swagger.definitions[schemaName].modelname = schemaName;
 
         map[schemaName] = swagger.definitions[schemaName];
