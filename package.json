@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "args": "^3.0.4",
-    "handlebars": "^4.4.5",
+    "handlebars": "^4.5.3",
     "openapi-model-example": "git+https://github.com/KevinGlinski/openapi-model-example.git",
     "request": "^2.81.0"
   },
